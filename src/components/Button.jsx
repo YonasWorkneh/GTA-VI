@@ -15,7 +15,6 @@ const Button = ({
   const clickAudioRef = useRef(new Audio("/audio/button-click.mov"));
 
   function handleMouseEnter() {
-    console.log("Mouse enter");
     if (hoverAudioRef.current) {
       hoverAudioRef.current.currentTime = 0; // Restart audio from beginning
       hoverAudioRef.current
@@ -25,7 +24,6 @@ const Button = ({
   }
 
   function handleMouseLeave() {
-    console.log("Mouse leave");
     if (hoverAudioRef.current) {
       hoverAudioRef.current.pause();
       hoverAudioRef.current.currentTime = 0; // Reset audio
@@ -36,7 +34,8 @@ const Button = ({
     <button
       onClick={() => {
         clickAudioRef.current.play();
-        onClickHandler(true);
+        console.log("clicked");
+        onClickHandler();
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

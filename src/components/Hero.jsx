@@ -6,14 +6,14 @@ import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
-import Trailer from "./Trailer";
+import { useAppContext } from "../context/AppContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const { setIsTrailerOpen, setVideoInfo } = useAppContext();
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
-  
 
   const [loading, setLoading] = useState(false);
   const [loadedVideos, setLoadedVideos] = useState(0);
@@ -168,7 +168,14 @@ const Hero = () => {
               containerClass="!bg-[#FFA500] flex-center gap-1"
               fontFamily="font-robotoMono"
               fontWeight={"font-bold"}
-              onClickHandler={setIsTrailerOpened}
+              onClickHandler={() => {
+                console.log("called");
+                setVideoInfo({
+                  src: getVideoSrc(currentIndex),
+                  trailerLink: getTrailerLink(currentIndex - 1),
+                });
+                setIsTrailerOpen(true);
+              }}
             />
           </div>
         </div>

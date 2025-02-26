@@ -5,10 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
+import { useAppContext } from "../context/AppContext";
 
 const navItems = ["Games", "Videos", "Prologue", "About", "Contact"];
 
 const NavBar = () => {
+  // appContext
+  const { isTrailerOpen } = useAppContext();
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
@@ -29,14 +32,14 @@ const NavBar = () => {
 
   // Manage audio playback
   useEffect(() => {
-    if (isAudioPlaying) {
+    if (isAudioPlaying && !isTrailerOpen) {
       audioElementRef.current.play();
       audioElementRef.current.loop = true;
       audioElementRef.current.volume = 0.2;
     } else {
       audioElementRef.current.pause();
     }
-  }, [isAudioPlaying]);
+  }, [isAudioPlaying, isTrailerOpen]);
 
   useEffect(() => {
     if (currentScrollY === 0) {

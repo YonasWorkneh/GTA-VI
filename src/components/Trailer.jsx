@@ -3,8 +3,13 @@ import { AiOutlineLink } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
 import { RiFullscreenFill } from "react-icons/ri";
 import copy from "copy-to-clipboard";
+import { useAppContext } from "../context/AppContext";
 
-function Trailer({ src, onCloseTrailer, trailerLink }) {
+function Trailer() {
+  const {
+    videoInfo: { src, trailerLink },
+    setIsTrailerOpen: onCloseTrailer,
+  } = useAppContext(); // Get video info and onCloseTrailer function
   const containerRef = useRef(null); // Ref for the container
   const control = useRef(null); // Ref for the control bars
   const [copied, setCopied] = useState(false); // State to show "Copied" text
@@ -93,7 +98,6 @@ function Trailer({ src, onCloseTrailer, trailerLink }) {
         className="h-full w-full object-cover"
         autoPlay
         playsInline // Ensures fullscreen works correctly on mobile
-        muted
       />
       {/* control bars */}
 
