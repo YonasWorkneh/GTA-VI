@@ -34,7 +34,6 @@ const Button = ({
     <button
       onClick={() => {
         clickAudioRef.current.play();
-        console.log("clicked");
         onClickHandler();
       }}
       onMouseEnter={handleMouseEnter}

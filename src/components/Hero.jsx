@@ -10,6 +10,13 @@ import { useAppContext } from "../context/AppContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const trailerLinks = [
+  "https://youtu.be/QdBZY2fkU-0",
+  "https://videos-rockstargames-com.akamaized.net/v4/1s626s55/flv/en-us-1080p.mp4",
+  "https://youtu.be/x1_-btXPWpc",
+  "https://youtu.be/x1_-btXPWpc",
+];
+
 const Hero = () => {
   const { setIsTrailerOpen, setVideoInfo } = useAppContext();
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -81,7 +88,6 @@ const Hero = () => {
       },
     });
   });
-  const trailerLinks = ["one", "two", "three", "four"];
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
   const getTrailerLink = (index) => trailerLinks[index];
@@ -169,7 +175,6 @@ const Hero = () => {
               fontFamily="font-robotoMono"
               fontWeight={"font-bold"}
               onClickHandler={() => {
-                console.log("called");
                 setVideoInfo({
                   src: getVideoSrc(currentIndex),
                   trailerLink: getTrailerLink(currentIndex - 1),

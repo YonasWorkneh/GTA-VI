@@ -1,20 +1,17 @@
-import About from "./components/About";
-import Hero from "./components/Hero";
+import { useAppContext } from "./context/AppContext";
+
 import NavBar from "./components/Navbar";
-import Features from "./components/Features";
+import Hero from "./components/Hero";
+import About from "./components/About";
 import Story from "./components/Story";
+import Features from "./components/Features";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import { useAppContext } from "./context/AppContext";
 import Trailer from "./components/Trailer";
-import { useEffect } from "react";
+
 
 function App() {
   const { isTrailerOpen } = useAppContext();
-  useEffect(() => {
-    console.log("Hello, welcome to the console!");
-    console.log(isTrailerOpen);
-  });
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       <NavBar />
